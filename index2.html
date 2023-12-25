@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Website - Home</title>
+    <style>
+          body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fce4ec; /* Light Pink */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ff80ab; /* Pink */
+            padding: 10px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #ff80ab; /* Pink */
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .present-box {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .present-box img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gift-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .open .gift-wrap {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cute Website</h1>
+    </header>
+
+    <main>
+        <p>Welcome to the cutest website ever! 🌈</p>
+
+        <!-- Present box container with the open/close functionality -->
+        <div class="present-box" onclick="togglePresent()">
+            <img src="present-closed.png" alt="Closed Present" id="presentImage">
+            <div class="gift-wrap" id="giftWrap">
+                <p>🎁 Yay! You opened the present! 🎉</p>
+            </div>
+        </div>
+
+        <p><a href="about us.html">Learn more about us!</a></p>
+    </main>
+
+    <footer>
+        <p>© 2023 Cute Website. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for the present box functionality -->
+    <script>
+        function togglePresent() {
+            var presentImage = document.getElementById("presentImage");
+            var giftWrap = document.getElementById("giftWrap");
+
+            // Toggle the "open" class to switch between closed and open states
+            presentImage.classList.toggle("open");
+            giftWrap.classList.toggle("open");
+        }
+    </script>
+</body>
+</html>

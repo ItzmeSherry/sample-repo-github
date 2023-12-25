@@ -1,0 +1,98 @@
+<pre>
+    import pygame
+    import sys
+    import random
+
+    # Initialize Pygame
+    pygame.init()
+
+    # Constants
+    WIDTH, HEIGHT = 800, 600
+    CAT_WIDTH, CAT_HEIGHT = 50, 50
+    STAR_SIZE = 30
+    FPS = 120
+
+    # Colors
+    WHITE = (255, 255, 255)
+    BLACK = (0, 0, 0)
+    YELLOW = (255, 255, 0)
+
+    # Create a window
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Custom Cute Cat Game")
+
+    # Load cat image
+    cat_image = pygame.image.load("C:\\Users\\payal\\.vscode\\ded\\dukh\\vscode\\bleh.py\\cat.jpg")  # Replace with the path to your cat image
+    cat_image = pygame.transform.scale(cat_image, (CAT_WIDTH, CAT_HEIGHT))
+
+    # Load star image
+    star_image = pygame.image.load("C:\\Users\\payal\\.vscode\\ded\\dukh\\vscode\\bleh.py\\star.jpg")  # Replace with the path to your star image
+    star_image = pygame.transform.scale(star_image, (STAR_SIZE, STAR_SIZE))
+
+    # Get the rect of the cat image
+    cat_rect = cat_image.get_rect()
+
+    # Set initial position for the cat
+    cat_rect.x = WIDTH // 2 - CAT_WIDTH // 2
+    cat_rect.y = HEIGHT // 2 - CAT_HEIGHT // 2
+
+    # Set initial speed for the cat
+    cat_speed = 5
+
+    # Create a list to store stars
+    stars = []
+
+    # Clock to control the frame rate
+    clock = pygame.time.Clock()
+
+    # Function to generate stars at random positions
+    def generate_star():
+        star_rect = star_image.get_rect()
+        star_rect.x = random.randint(0, WIDTH - STAR_SIZE)
+        star_rect.y = random.randint(0, HEIGHT - STAR_SIZE)
+        return star_rect
+
+    # Main game loop
+    while True:
+          for event in pygame.event.get():
+              if event.type == pygame.QUIT:
+                 pygame.quit()
+                 sys.exit()
+
+    # Move the cat based on user input
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and cat_rect.x > 0:
+        cat_rect.x -= cat_speed
+    if keys[pygame.K_RIGHT] and cat_rect.x < WIDTH - CAT_WIDTH:
+        cat_rect.x += cat_speed
+    if keys[pygame.K_UP] and cat_rect.y > 0:
+        cat_rect.y -= cat_speed
+    if keys[pygame.K_DOWN] and cat_rect.y < HEIGHT - CAT_HEIGHT:
+        cat_rect.y += cat_speed
+
+    # Generate stars at random intervals
+    if random.randint(1, 100) < 5:  # Adjust the probability as needed
+        stars.append(generate_star())
+
+    # Check for collisions between the cat and stars
+    for star in stars:
+        if cat_rect.colliderect(star):
+            stars.remove(star)
+
+    # Fill the screen with white
+    screen.fill(WHITE)
+
+    # Draw stars on the screen
+    for star in stars:
+        screen.blit(star_image, star)
+
+    # Draw the cat on the screen
+    screen.blit(cat_image, cat_rect)
+
+    # Update the display
+    pygame.display.flip()
+
+    # Cap the frame rate
+    clock.tick(FPS)
+
+</pre>

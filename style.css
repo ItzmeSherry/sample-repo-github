@@ -1,0 +1,49 @@
+/* Reset some default styles to ensure consistent styling */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fce4ec; /* Light Pink */
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #ff80ab; /* Pink */
+    padding: 10px;
+}
+
+h1 {
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #ff80ab; /* Pink */
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Style links */
+a {
+    color: #007BFF; /* Blue */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Style images */
+img {
+    max-width: 100%;
+    height: auto;
+}
